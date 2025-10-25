@@ -6,6 +6,7 @@ import Icon from '@/components/ui/icon';
 import Snowfall from '@/components/Snowfall';
 import ChristmasLights from '@/components/ChristmasLights';
 import PaymentModal from '@/components/PaymentModal';
+import OnlineCounter from '@/components/OnlineCounter';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -149,13 +150,20 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
+            <Card className="border-primary/20 bg-card/50 backdrop-blur hover-scale animate-slide-up">
+              <CardContent className="pt-6 text-center">
+                <Icon name="Users" size={32} className="mx-auto mb-2 text-primary" />
+                <OnlineCounter />
+                <p className="text-sm text-muted-foreground">Онлайн</p>
+              </CardContent>
+            </Card>
+            
             {[
-              { icon: 'Users', label: 'Онлайн', value: '247+' },
               { icon: 'Trophy', label: 'Рейтинг', value: '#1' },
               { icon: 'Clock', label: 'Аптайм', value: '99.9%' },
               { icon: 'Heart', label: 'Отзывы', value: '5.0' }
             ].map((stat, index) => (
-              <Card key={index} className="border-primary/20 bg-card/50 backdrop-blur hover-scale animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} className="border-primary/20 bg-card/50 backdrop-blur hover-scale animate-slide-up" style={{ animationDelay: `${(index + 1) * 0.1}s` }}>
                 <CardContent className="pt-6 text-center">
                   <Icon name={stat.icon as any} size={32} className="mx-auto mb-2 text-primary" />
                   <p className="text-3xl font-bold text-primary">{stat.value}</p>
