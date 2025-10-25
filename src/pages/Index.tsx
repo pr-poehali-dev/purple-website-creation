@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import Snowfall from '@/components/Snowfall';
+import ChristmasLights from '@/components/ChristmasLights';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -72,6 +73,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-purple-950/20">
       <Snowfall />
       <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <ChristmasLights />
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3 animate-fade-in">
