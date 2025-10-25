@@ -5,9 +5,22 @@ import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import Snowfall from '@/components/Snowfall';
 import ChristmasLights from '@/components/ChristmasLights';
+import PaymentModal from '@/components/PaymentModal';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState<{ name: string; price: string } | null>(null);
+
+  const handleBuyClick = (packageName: string, price: string) => {
+    setSelectedPackage({ name: packageName, price });
+    setIsPaymentOpen(true);
+  };
+
+  const handleClosePayment = () => {
+    setIsPaymentOpen(false);
+    setSelectedPackage(null);
+  };
 
   const donatePackages = [
     {
@@ -191,7 +204,10 @@ const Index = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 mt-6">
+                  <Button 
+                    onClick={() => handleBuyClick(pkg.name, pkg.price)}
+                    className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 mt-6"
+                  >
                     Купить
                   </Button>
                 </CardContent>
@@ -267,6 +283,13 @@ const Index = () => {
           </div>
         </section>
       </main>
+
+      <PaymentModal
+        isOpen={isPaymentOpen}
+        onClose={handleClosePayment}
+        packageName={selectedPackage?.name || ''}
+        price={selectedPackage?.price || ''}
+      />
 
       <footer className="border-t border-border/40 mt-24 py-12 bg-card/30 backdrop-blur">
         <div className="container mx-auto px-4">
