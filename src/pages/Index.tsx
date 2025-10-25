@@ -7,11 +7,24 @@ import Snowfall from '@/components/Snowfall';
 import ChristmasLights from '@/components/ChristmasLights';
 import PaymentModal from '@/components/PaymentModal';
 import OnlineCounter from '@/components/OnlineCounter';
+import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<{ name: string; price: string } | null>(null);
+  const { toast } = useToast();
+
+  const SERVER_IP = 'play.xtserver.ru';
+
+  const handleCopyIP = () => {
+    navigator.clipboard.writeText(SERVER_IP);
+    toast({
+      title: 'IP скопирован!',
+      description: `${SERVER_IP} — вставь в Minecraft и подключайся!`,
+      duration: 3000,
+    });
+  };
 
   const handleBuyClick = (packageName: string, price: string) => {
     setSelectedPackage({ name: packageName, price });
@@ -115,9 +128,12 @@ const Index = () => {
               ))}
             </div>
             
-            <Button className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 animate-fade-in">
-              <Icon name="Play" size={16} className="mr-2" />
-              Играть
+            <Button 
+              onClick={handleCopyIP}
+              className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 animate-fade-in"
+            >
+              <Icon name="Copy" size={16} className="mr-2" />
+              Копировать IP
             </Button>
           </div>
         </div>
@@ -139,10 +155,20 @@ const Index = () => {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
-            <Button size="lg" className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-lg px-8 py-6 hover-scale">
-              <Icon name="Rocket" size={20} className="mr-2" />
-              Начать играть
+            <Button 
+              size="lg" 
+              onClick={handleCopyIP}
+              className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-lg px-8 py-6 hover-scale"
+            >
+              <Icon name="Copy" size={20} className="mr-2" />
+              Копировать IP
             </Button>
+            <div className="flex flex-col items-center gap-2">
+              <code className="px-4 py-2 bg-card/50 border border-primary/30 rounded-lg text-primary font-mono text-lg">
+                {SERVER_IP}
+              </code>
+              <p className="text-xs text-muted-foreground">Версия: 1.20.x</p>
+            </div>
             <Button size="lg" variant="outline" className="border-primary/40 hover:bg-primary/10 text-lg px-8 py-6 hover-scale">
               <Icon name="Users" size={20} className="mr-2" />
               Discord
