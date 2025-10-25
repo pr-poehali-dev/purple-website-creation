@@ -72,12 +72,14 @@ const Index = () => {
       <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2 animate-fade-in">
-              <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
-                <Icon name="Gamepad2" size={24} className="text-white" />
-              </div>
+            <div className="flex items-center space-x-3 animate-fade-in">
+              <img 
+                src="https://cdn.poehali.dev/files/dea88d68-96c6-4db9-8a0c-d1c95e4c8bc3.jpg" 
+                alt="Logo" 
+                className="h-12 w-12 object-cover rounded-lg shadow-lg shadow-primary/50"
+              />
               <span className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
-                YourServer
+                XTServer
               </span>
             </div>
             
@@ -266,12 +268,14 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
             <div className="space-y-3">
-              <div className="flex items-center space-x-2 justify-center md:justify-start">
-                <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
-                  <Icon name="Gamepad2" size={20} className="text-white" />
-                </div>
+              <div className="flex items-center space-x-3 justify-center md:justify-start">
+                <img 
+                  src="https://cdn.poehali.dev/files/dea88d68-96c6-4db9-8a0c-d1c95e4c8bc3.jpg" 
+                  alt="Logo" 
+                  className="h-10 w-10 object-cover rounded-lg shadow-lg shadow-primary/50"
+                />
                 <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
-                  YourServer
+                  XTServer
                 </span>
               </div>
               <p className="text-sm text-muted-foreground">Лучший игровой сервер 2025 года</p>
